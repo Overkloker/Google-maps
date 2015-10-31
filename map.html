@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 100%; }
+      .but {position: absolute; top: 50px; left: 500px;
+          z-index: 21;
+    background-color: #0075FF;
+    color: #fff;
+    padding: 30px;
+    border-radius: 5px;}
+    </style>
+  </head>
+  <body>
+  <div class="but">Hello</div>
+    <div id="map"></div>
+    <script type="text/javascript">
+    var map;
+    var marker;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 49.43297212726168, lng: 26.984092718601236},
+    zoom: 12
+  });
+
+
+marker = new google.maps.Marker({
+    position: {lat: 49.43297212726168, lng: 26.984092718601236},
+    map: map,
+    title: 'Hello World!',
+    draggable: true,
+    animation: google.maps.Animation.DROP
+  });
+marker.addListener('click', toggleBounce);
+}
+
+
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0h5LE0mipfE07gAxRAGS72sakN9T0psU&callback=initMap">
+    </script>
+  </body>
+</html>
